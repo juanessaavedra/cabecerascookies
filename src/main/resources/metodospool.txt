@@ -1,0 +1,23 @@
+
+pool.setInitialSize:
+
+Establece el número de conexiones que se establecerán cuando se inicie el pool de conexiones. El valor por defecto es 10.
+Si este valor supera setMaxActive(int) se reducirá automáticamente.
+
+
+pool.setMindle:
+
+El número mínimo de conexiones establecidas que deben mantenerse en el pool en todoo momento. El pool de conexiones
+ puede reducirse por debajo de este número si las consultas de validación fallan y las conexiones se cierran.
+
+
+pool.SetMaxidle:
+
+
+El número máximo de conexiones que deberían mantenerse en la reserva inactiva si isPoolSweeperEnabled() devuelve false.
+ Si isPoolSweeperEnabled() devuelve true, entonces el grupo de conexiones inactivas puede crecer hasta getMaxActive() y se
+  reducirá de acuerdo con getMinEvictableIdleTimeMillis(). El valor por defecto es maxActive:100
+
+
+
+Referencia: https://stackoverflow.com/questions/23244432/difference-between-setmaxidle-setminidle-setinitialsize-and-setmaxactive-pool-pr

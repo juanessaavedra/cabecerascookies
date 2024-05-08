@@ -1,6 +1,9 @@
 package model;
 
+import jakarta.enterprise.context.SessionScoped;
 import lombok.*;
+
+import java.io.Serializable;
 
 @Getter
 @Setter
@@ -8,9 +11,10 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Builder
+@SessionScoped
 
 
-public class Vehicle {
+public class Vehicle  implements Serializable {
     private int id;
     private String name;
     private String type;

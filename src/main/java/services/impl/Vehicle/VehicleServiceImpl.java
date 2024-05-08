@@ -1,5 +1,7 @@
 package services.impl.Vehicle;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import mapping.dtos.VehicleDTO;
 import model.Vehicle;
 import repository.Repository;
@@ -12,12 +14,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+@ApplicationScoped
 public class VehicleServiceImpl implements VehicleService {
 
+    @Inject
     private Repository<VehicleDTO> vehicleRepository;
-    public VehicleServiceImpl(Connection connection) {
-        this.vehicleRepository = new VehicleRepositoryJdbcImpl(connection);
-    }
 
 
     @Override

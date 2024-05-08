@@ -1,6 +1,7 @@
 package controllers;
 
 
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -22,13 +23,17 @@ import java.util.Optional;
 @WebServlet({"/vehicle", "/vehicle.html"})
 public class VehicleServlet extends HttpServlet {
 
+    @Inject
+    LoginServiceSession auth;
+
+    @Inject
+    VehicleService vehicles;
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Connection conn = (Connection) req.getAttribute("conn");
-        VehicleService vehicles = new VehicleServiceImpl(conn);
 
-
-        LoginServiceSession auth = new LoginServiceSessionImpl();
         Optional<String> usernameOptional = auth.getUserName(req);
 
 

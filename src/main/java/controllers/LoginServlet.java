@@ -1,5 +1,6 @@
 package controllers;
 
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -18,12 +19,15 @@ import java.util.Optional;
 public class LoginServlet extends HttpServlet {
     final static String USERNAME = "admin";
     final static String PASSWORD = "12345";
+    @Inject
+    LoginServiceSession auth;
+
+
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        LoginServiceSession auth = new LoginServiceSessionImpl();
         Optional<String> usernameOptional = auth.getUserName(req);
 
         if (usernameOptional.isPresent()) {

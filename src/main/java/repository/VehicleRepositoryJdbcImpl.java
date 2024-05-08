@@ -1,23 +1,22 @@
 package repository;
 
+import annotations.MysqlConn;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import mapping.dtos.VehicleDTO;
 import model.Vehicle;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@ApplicationScoped
 public class VehicleRepositoryJdbcImpl implements Repository<VehicleDTO>{
 
-    //Atributo con la conexion
+
+    @Inject
+    @MysqlConn
     private Connection conn;
 
-    //Constructor que recibe la conexion
-
-
-    public VehicleRepositoryJdbcImpl(Connection conn) {
-        this.conn = conn;
-    }
-    //Ahora con la conexion, realizamos la consulta
 
     @Override
     public List<VehicleDTO> listar() throws SQLException {
@@ -28,7 +27,7 @@ public class VehicleRepositoryJdbcImpl implements Repository<VehicleDTO>{
              ResultSet rs = stmt.executeQuery("SELECT v.* order by v.id ASC)")) {
             while (rs.next()) {
 
-                Vehicle v = getVehicle(rs);
+                VehicleDTO v = getVehicle(rs);
                 vehicles.add(v);
             }
         }

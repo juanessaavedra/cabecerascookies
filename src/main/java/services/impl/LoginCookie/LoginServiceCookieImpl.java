@@ -1,11 +1,14 @@
 package services.impl.LoginCookie;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.Arrays;
 import java.util.Optional;
 
+
+@ApplicationScoped
 public class LoginServiceCookieImpl implements LoginServiceCookie {
 
     @Override
